@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Magazine))]
-public class Minigun : MonoBehaviour, IWeapon
+public class Minigun : MonoBehaviour
 {
   private Magazine m_magazine;
 
@@ -14,27 +13,6 @@ public class Minigun : MonoBehaviour, IWeapon
 
   private bool m_canFire = true;
   private bool m_shooting = false;
-
-  public void OnTriggerDown(eTrigger triggerType)
-  {
-    m_shooting = true;
-  }
-
-  public void OnTriggerHold(eTrigger triggerType)
-  {
-    if (triggerType == eTrigger.PRIMARY)
-    {
-      m_fireRate -= Time.deltaTime / m_spinUpTime;
-      m_fireRate = Mathf.Max(m_maxFireRate, m_fireRate);
-      if (m_canFire)
-        m_magazine.Fire(Shoot);
-    }
-  }
-
-  public void OnTriggerRelease(eTrigger triggerType)
-  {
-    m_shooting = false;
-  }
 
   // Start is called before the first frame update
   void Start()
@@ -47,6 +25,24 @@ public class Minigun : MonoBehaviour, IWeapon
   {
     if (!m_shooting || m_magazine.IsReloading)
       m_fireRate = Mathf.Min(m_minFireRate, m_fireRate + (Time.deltaTime / 2));
+
+    if (Input.GetMouseButtonDown(0))
+    {
+      m_shooting = true;
+    }
+
+    if (Input.GetMouseButton(0))
+    {
+      m_fireRate -= Time.deltaTime / m_spinUpTime;
+      m_fireRate = Mathf.Max(m_maxFireRate, m_fireRate);
+      if (m_canFire)
+        m_magazine.Fire(Shoot);
+    }
+
+    if (Input.GetMouseButtonUp(0))
+    {
+      m_shooting = false;
+    }
   }
 
   private IEnumerator CoolDownAsync()

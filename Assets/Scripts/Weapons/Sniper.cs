@@ -2,28 +2,25 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Magazine))]
-public class Sniper : MonoBehaviour, IWeapon
+public class Sniper : MonoBehaviour
 {
   private Magazine m_magazine;
 
   private float m_fireRate = 0.8f;
   private bool m_canFire = true;
 
-  public void OnTriggerDown(eTrigger triggerType)
-  {
-    if (triggerType == eTrigger.PRIMARY)
-      if (m_canFire)
-        m_magazine.Fire(Shoot);
-  }
-
-  public void OnTriggerHold(eTrigger triggerType) { }
-
-  public void OnTriggerRelease(eTrigger triggerType) { }
-
   // Start is called before the first frame update
   void Start()
   {
     m_magazine = GetComponent<Magazine>();
+  }
+
+  void Update()
+  {
+    if (Input.GetMouseButtonDown(0) && m_canFire)
+    {
+      Shoot();
+    }
   }
 
   private IEnumerator CoolDownAsync()

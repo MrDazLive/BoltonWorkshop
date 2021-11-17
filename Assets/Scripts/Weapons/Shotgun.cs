@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Magazine))]
-public class Shotgun : MonoBehaviour, IWeapon
+public class Shotgun : MonoBehaviour
 {
   private Magazine m_magazine;
 
@@ -14,30 +13,23 @@ public class Shotgun : MonoBehaviour, IWeapon
 
   private bool m_canFire = true;
 
-  public void OnTriggerDown(eTrigger triggerType)
-  {
-    if(m_canFire)
-      switch(triggerType)
-      {
-        case eTrigger.PRIMARY: 
-          SingleShot(); 
-          return;
-        case eTrigger.SECONDARY: 
-          StartCoroutine(nameof(DoubleShot)); 
-          return;
-        default:
-          break;
-      }
-  }
-
-  public void OnTriggerHold(eTrigger triggerType) { }
-
-  public void OnTriggerRelease(eTrigger triggerType) { }
-
   // Start is called before the first frame update
   void Start()
   {
     m_magazine = GetComponent<Magazine>();
+  }
+
+  void Update()
+  {
+    if (Input.GetMouseButtonDown(0))
+    {
+      SingleShot();
+    }
+
+    if (Input.GetMouseButtonDown(1))
+    {
+      StartCoroutine(nameof(DoubleShot));
+    }
   }
 
   private IEnumerator Cooldown()

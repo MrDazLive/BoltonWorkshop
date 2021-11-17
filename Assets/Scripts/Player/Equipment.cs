@@ -1,45 +1,36 @@
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
-  private IWeapon m_activeWeapon;
+  private Dictionary<eWeapon, GameObject> m_weapons = new Dictionary<eWeapon, GameObject>();
+  private eWeapon m_activeWeapon;
 
   // Start is called before the first frame update
   void Start()
   {
-    ActivateWeapon(GetComponentInChildren<IWeapon>(true));
-  }
-
-  void CheckTrigger(eTrigger trigger)
-  {
-    if (Input.GetMouseButtonDown((int)trigger))
-      m_activeWeapon.OnTriggerDown(trigger);
-    if (Input.GetMouseButton((int)trigger))
-      m_activeWeapon.OnTriggerHold(trigger);
-    if (Input.GetMouseButtonUp((int)trigger))
-      m_activeWeapon.OnTriggerRelease(trigger);
+    m_weapons.Add(eWeapon.SNIPER, GetComponentInChildren<Sniper>(true).gameObject);
+    m_weapons.Add(eWeapon.MINIGUN, GetComponentInChildren<Minigun>(true).gameObject);
+    m_weapons.Add(eWeapon.SHOTGUN, GetComponentInChildren<Shotgun>(true).gameObject);
+    
+    m_weapons[default].SetActive(true);
   }
 
   // Update is called once per frame
   void Update()
   {
-    var weapons = gameObject.GetComponentsInChildren<IWeapon>(true);
-    for (int i = 0; i < Mathf.Min(8, weapons.Count()); ++i)
+    for (int i = 0; i < Mathf.Min(8, typeof(eWeapon).GetEnumValues().Length); ++i)
       if (Input.GetKeyDown((i + 1).ToString()))
-        ActivateWeapon(weapons[i]);
-
-    CheckTrigger(eTrigger.PRIMARY);
-    CheckTrigger(eTrigger.SECONDARY);
+        ActivateWeapon((eWeapon)i);
   }
 
-  void ActivateWeapon(IWeapon weapon)
+  void ActivateWeapon(eWeapon weapon)
   {
     if (weapon == m_activeWeapon)
       return;
 
-    (m_activeWeapon as MonoBehaviour)?.gameObject.SetActive(false);
+    m_weapons[m_activeWeapon].SetActive(false);
     m_activeWeapon = weapon;
-    (m_activeWeapon as MonoBehaviour)?.gameObject.SetActive(true);
+    m_weapons[m_activeWeapon].SetActive(true);
   }
 }

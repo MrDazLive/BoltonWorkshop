@@ -1065,8 +1065,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 694464977}
-  - component: {fileID: 694464978}
   - component: {fileID: 694464979}
+  - component: {fileID: 694464980}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -1090,18 +1090,6 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 8}
---- !u!114 &694464978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694464976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aa6b69f3d1311c40aa4776bb6fd0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &694464979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1104,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_clipSize: 8
   m_reloadTime: 2
+--- !u!114 &694464980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694464976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca15fbae8cdb8f49828299aeea7409e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weaponType: 2
+  m_bulletDamage: 0.1
+  m_fireRate: 0.6
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,7 +1876,7 @@ GameObject:
   - component: {fileID: 1179117381}
   - component: {fileID: 1179117380}
   - component: {fileID: 1179117379}
-  - component: {fileID: 1179117378}
+  - component: {fileID: 1179117383}
   m_Layer: 0
   m_Name: Minigun
   m_TagString: Untagged
@@ -1896,18 +1899,6 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1179117378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179117376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56cd0f4a0aff6254a87e4ac88656a8bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1179117379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,6 +1977,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179117376}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1179117383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179117376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca15fbae8cdb8f49828299aeea7409e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weaponType: 1
+  m_bulletDamage: 0.08
+  m_fireRate: 0.4
 --- !u!1 &1217107876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,7 +2824,7 @@ GameObject:
   - component: {fileID: 1748649491}
   - component: {fileID: 1748649490}
   - component: {fileID: 1748649489}
-  - component: {fileID: 1748649488}
+  - component: {fileID: 1748649493}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -2841,18 +2847,6 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 8}
---- !u!114 &1748649488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748649486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1084e5af61e4919499f16ee96f5ad32c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1748649489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2931,6 +2925,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748649486}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1748649493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748649486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca15fbae8cdb8f49828299aeea7409e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weaponType: 0
+  m_bulletDamage: 1
+  m_fireRate: 0.8
 --- !u!1 &1879887261
 GameObject:
   m_ObjectHideFlags: 0

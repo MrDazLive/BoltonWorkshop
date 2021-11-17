@@ -9,9 +9,9 @@ public class Equipment : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    m_weapons.Add(eWeapon.SNIPER, GetComponentInChildren<Sniper>(true).gameObject);
-    m_weapons.Add(eWeapon.MINIGUN, GetComponentInChildren<Minigun>(true).gameObject);
-    m_weapons.Add(eWeapon.SHOTGUN, GetComponentInChildren<Shotgun>(true).gameObject);
+    m_weapons.Add(eWeapon.SNIPER, transform.Find("Sniper").gameObject);
+    m_weapons.Add(eWeapon.MINIGUN, transform.Find("Minigun").gameObject);
+    m_weapons.Add(eWeapon.SHOTGUN, transform.Find("Shotgun").gameObject);
     
     m_weapons[default].SetActive(true);
   }
